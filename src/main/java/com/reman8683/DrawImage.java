@@ -6,10 +6,12 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URISyntaxException;
 import java.util.List;
 
 public class DrawImage {
-    public ByteArrayOutputStream GenerateImage(String title, List<String> mealData) throws IOException, FontFormatException {
+    public ByteArrayOutputStream GenerateImage(String title, List<String> mealData) throws IOException, FontFormatException, URISyntaxException {
         BufferedImage bufferedImage = new BufferedImage(1080, 1920, BufferedImage.TYPE_INT_RGB);
 
         Graphics graphic = bufferedImage.getGraphics();
@@ -22,8 +24,12 @@ public class DrawImage {
         graphics.fillRect(0, 0, 1080, 1920);
 
         //폰트
-        Font titlefont = Font.createFont(Font.TRUETYPE_FONT, new File(Main.class.getResource("./BlackHanSans-Regular.ttf").getFile()));
-        Font mainfont = Font.createFont(Font.TRUETYPE_FONT, new File(Main.class.getResource("./DoHyeon-Regular.ttf").getFile()));
+        InputStream titlefontIs = DrawImage.class.getClassLoader().getResourceAsStream("BlackHanSans-Regular.ttf");
+        InputStream mainfontIs = DrawImage.class.getClassLoader().getResourceAsStream("DoHyeon-Regular.ttf");
+
+
+        Font titlefont = Font.createFont(Font.TRUETYPE_FONT, titlefontIs);
+        Font mainfont = Font.createFont(Font.TRUETYPE_FONT, mainfontIs);
 
         graphics.setFont(titlefont.deriveFont(175f));
         FontMetrics titlefontMetrics = graphics.getFontMetrics();

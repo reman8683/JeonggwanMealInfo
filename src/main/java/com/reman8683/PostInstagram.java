@@ -13,6 +13,7 @@ import com.github.instagram4j.instagram4j.responses.media.MediaResponse;
 import java.awt.*;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.List;
@@ -61,6 +62,8 @@ public class PostInstagram extends TimerTask {
         } catch (ExecutionException e) {
             throw new RuntimeException(e);
         } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }
     }

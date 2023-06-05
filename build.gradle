@@ -39,3 +39,11 @@ jar {
     }
     duplicatesStrategy = 'exclude'
 }
+
+sourceSets {
+    main {
+        resources {
+            //srcDirs "src/main/resources"
+        }
+    }
+}
