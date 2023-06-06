@@ -26,7 +26,7 @@ public class PostInstagram extends TimerTask {
     public void run() {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
-        calendar.add(Calendar.HOUR, 10);
+        calendar.add(Calendar.DATE, 1);
         SimpleDateFormat timeFormat = new SimpleDateFormat("yyyyMMdd");
 
         String serialDate = timeFormat.format(calendar.getTime());
