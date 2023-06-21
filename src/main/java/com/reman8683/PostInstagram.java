@@ -1,6 +1,6 @@
 package com.reman8683;
 
-import com.github.instagram4j.instagram4j.exceptions.IGLoginException;
+import com.github.instagram4j.instagram4j.IGClient;
 import com.github.instagram4j.instagram4j.models.highlights.Highlight;
 import com.github.instagram4j.instagram4j.requests.highlights.HighlightsCreateReelRequest;
 import com.github.instagram4j.instagram4j.requests.highlights.HighlightsDeleteReelRequest;
@@ -20,8 +20,6 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
-import static com.reman8683.Main.client;
-
 public class PostInstagram extends TimerTask {
     public void run() {
         Calendar calendar = Calendar.getInstance();
@@ -33,6 +31,11 @@ public class PostInstagram extends TimerTask {
         System.out.println(serialDate);
 
         try {
+            IGClient client = IGClient.builder()
+                    .username("today.jeonggwanhs.meal")
+                    .password("rlaxoghks07")
+                    .login();
+
             List<String> mealData = new GetMeal().GetMealFromNeis(serialDate);
             String title = new GetMeal().SerialDateToGeneralDate(serialDate);
 
@@ -55,15 +58,7 @@ public class PostInstagram extends TimerTask {
                     new HighlightsCreateReelRequest(title, storyResponse.getMedia().getId()).execute(client).join();
 
             System.out.println(response.getStatus());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (FontFormatException e) {
-            throw new RuntimeException(e);
-        } catch (ExecutionException e) {
-            throw new RuntimeException(e);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        } catch (URISyntaxException e) {
+        } catch (IOException | FontFormatException | ExecutionException | InterruptedException | URISyntaxException e) {
             throw new RuntimeException(e);
         }
     }
