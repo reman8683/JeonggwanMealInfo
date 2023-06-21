@@ -21,7 +21,7 @@ dependencies {
     //implementation 'org.brunocvcunha.instagram4j:instagram4j:1.14'
 
     implementation 'org.jsoup:jsoup:1.16.1'
-    implementation 'com.google.code.gson:gson:2.7'
+    implementation 'com.google.code.gson:gson:2.8.9'
 
 
 }
