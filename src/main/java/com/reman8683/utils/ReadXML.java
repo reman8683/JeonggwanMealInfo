@@ -13,6 +13,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ReadXML {
+    /**
+     * @param xml [String] Xml
+     * @return [Map&lt;String, String&gt;] Map Xml data
+     */
     public Map<String, String> convertXMLToMap(String xml) {
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();

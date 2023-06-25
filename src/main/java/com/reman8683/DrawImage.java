@@ -10,6 +10,14 @@ import java.net.URISyntaxException;
 import java.util.List;
 
 public class DrawImage {
+    /**
+     * @param title [String] 이미지의 타이틀
+     * @param mealData [List<String>] 급식 메뉴
+     * @return [ByteArrayOutputStream] 급식 메뉴 이미지
+     * @throws IOException
+     * @throws FontFormatException
+     * @throws URISyntaxException
+     */
     public ByteArrayOutputStream GenerateImage(String title, List<String> mealData) throws IOException, FontFormatException, URISyntaxException {
         BufferedImage bufferedImage = new BufferedImage(1080, 1920, BufferedImage.TYPE_INT_RGB);
 
@@ -24,7 +32,7 @@ public class DrawImage {
 
         //폰트
         InputStream titlefontIs = DrawImage.class.getClassLoader().getResourceAsStream("BlackHanSans-Regular.ttf");
-        InputStream mainfontIs = DrawImage.class.getClassLoader().getResourceAsStream("DoHyeon-Regular.ttf");
+        InputStream mainfontIs = DrawImage.class.getClassLoader().getResourceAsStream("S-Core_Dream_OTF/SCDream4.otf");
 
 
         assert titlefontIs != null;
@@ -39,7 +47,7 @@ public class DrawImage {
         //타이틀 위치
         int titleX = (1080 - titlefontMetrics.stringWidth(title)) / 2;
         int titleY = (int) ((1920 - titlefontMetrics.getHeight()) / 2 + titlefontMetrics.getAscent()
-                - (mealData.size() * graphics.getFontMetrics(mainfont.deriveFont(175f)).getHeight()
+                - (mealData.size() * graphics.getFontMetrics(titlefont.deriveFont(175f)).getHeight()
                 - titlefontMetrics.getHeight()) / 4 * 1.5);
 
         //타이틀
@@ -47,7 +55,7 @@ public class DrawImage {
         graphics.drawString(title, titleX, titleY);
 
         //메인
-        graphics.setFont(mainfont.deriveFont(125f));
+        graphics.setFont(mainfont.deriveFont(75f));
         FontMetrics mainfontMetrics = graphics.getFontMetrics();
         int offsetY = 0;
 

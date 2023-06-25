@@ -22,23 +22,27 @@ import java.util.concurrent.ExecutionException;
 
 public class PostInstagram extends TimerTask {
     public void run() {
+        //calendar에 내일 날짜 설정
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
         calendar.add(Calendar.DATE, 1);
-        SimpleDateFormat timeFormat = new SimpleDateFormat("yyyyMMdd");
+        SimpleDateFormat timeFormat = new SimpleDateFormat("yyyy/MM/dd");
 
         String serialDate = timeFormat.format(calendar.getTime());
         System.out.println(serialDate);
 
         try {
+            //인스타 로그인
             IGClient client = IGClient.builder()
                     .username("today.jeonggwanhs.meal")
                     .password("rlaxoghks07")
                     .login();
 
-            List<String> mealData = new GetMeal().GetMealFromNeis(serialDate);
+            //급식정보 불러오기
+            List<String> mealData = new GetMeal().GetMealFromBusanEdu(serialDate);
             String title = new GetMeal().SerialDateToGeneralDate(serialDate);
 
+            //이미지 생성
             ByteArrayOutputStream outputStream = new DrawImage().GenerateImage(title, mealData);
 
             CompletableFuture<HighlightsUserTrayResponse> highlightsUserTray = new HighlightsUserTrayRequest(client.getSelfProfile().getPk()).execute(client);

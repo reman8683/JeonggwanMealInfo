@@ -9,15 +9,6 @@ import java.util.concurrent.TimeUnit;
 public class Main {
 
     public static void main(String[] args) {
-        /*
-        try {
-            System.out.println(new GetMeal().GetMealFromNeisJson("20230621"));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        System.exit(0);
-         */
         Calendar today = Calendar.getInstance(Locale.KOREA); // 오늘
         Calendar scheduledTime = Calendar.getInstance(Locale.KOREA); // 실행 시간
         scheduledTime.setTimeZone(TimeZone.getTimeZone("Asia/Seoul"));
