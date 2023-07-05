@@ -47,8 +47,8 @@ public class DrawImage {
         //타이틀 위치
         int titleX = (1080 - titlefontMetrics.stringWidth(title)) / 2;
         int titleY = (int) ((1920 - titlefontMetrics.getHeight()) / 2 + titlefontMetrics.getAscent()
-                - (mealData.size() * graphics.getFontMetrics(titlefont.deriveFont(175f)).getHeight()
-                - titlefontMetrics.getHeight()) / 4 * 1.5);
+                - (mealData.size() * titlefontMetrics.getHeight()
+                - titlefontMetrics.getHeight()) / 4);
 
         //타이틀
         graphics.setColor(new Color(249, 217, 73));

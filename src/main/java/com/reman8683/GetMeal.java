@@ -16,7 +16,7 @@ public class GetMeal {
      * @return [List&lt;String&gt;] 급식 메뉴
      * @throws IOException
      */
-    public List<String> GetMealFromNeis(String date) throws IOException {
+    public List<String> getMealFromNeis(String date) throws IOException {
         String data = Jsoup.connect(
                 "https://open.neis.go.kr/hub/mealServiceDietInfo?KEY=50cf8994e2ef4b77b11efd3df124036a&ATPT_OFCDC_SC_CODE=C10&SD_SCHUL_CODE=7150580&MMEAL_SC_CODE=2&MLSV_YMD=202306" + date)
                 .get().html();
@@ -39,7 +39,7 @@ public class GetMeal {
      * @return [List&lt;String&gt;] 급식 메뉴
      * @throws IOException
      */
-    public List<String> GetMealFromBusanEdu(String date) throws IOException {
+    public List<String> getMealFromBusanEdu(String date) throws IOException {
         String data = Jsoup.connect(
                         "https://school.busanedu.net/jeonggwan-h/dv/dietView/selectDvList.do")
                 .data("dietTy", "중식")
@@ -74,7 +74,7 @@ public class GetMeal {
      * @param SerialDate [String] yyyy/MM/dd
      * @return [String] M월d일
      */
-    public String SerialDateToGeneralDate(String SerialDate) {
+    public String serialDateToGeneralDate(String SerialDate) {
         return SerialDate.substring(5,7)
                 .replaceFirst("^0*", "")
                 + "월"

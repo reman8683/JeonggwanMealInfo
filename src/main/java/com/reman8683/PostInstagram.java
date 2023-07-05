@@ -39,8 +39,8 @@ public class PostInstagram extends TimerTask {
                     .login();
 
             //급식정보 불러오기
-            List<String> mealData = new GetMeal().GetMealFromBusanEdu(serialDate);
-            String title = new GetMeal().SerialDateToGeneralDate(serialDate);
+            List<String> mealData = new GetMeal().getMealFromBusanEdu(serialDate);
+            String title = new GetMeal().serialDateToGeneralDate(serialDate);
 
             //이미지 생성
             ByteArrayOutputStream outputStream = new DrawImage().GenerateImage(title, mealData);
